@@ -6,6 +6,6 @@
 
 se=$(xsel -b -n -o | tr '\n' ' '| tr '\r' ' ' | sed 's/  / /g') # xclip -selection clipboard -o
 echo $se
-re=$(/home/xuewei/bin/CopyTranslator/trans -b en:zh "$se")
+re=$(trans -b en:zh "$se")  # the 'trans' command is the installed translate-shell.
 echo $re
 notify-send "$se" "$re" -i accessories-dictionary -t 2000
