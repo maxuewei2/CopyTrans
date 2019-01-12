@@ -1,16 +1,16 @@
 # CopyTrans
 
-在Linux下复制文本并翻译，以系统通知显示翻译结果。
+在 Linux 下复制文本并翻译，以系统通知显示翻译结果。
 
 ## 效果
 ![](SC.gif)
 
 ## 安装
-安装xsel或xclip
+安装 xsel 或 xclip
 ```bash
 sudo apt install xsel xclip
 ```
-安装[notify-send](https://github.com/vlevit/notify-send.sh)
+安装 [notify-send](https://github.com/vlevit/notify-send.sh)
 ```bash
 sudo apt install notify-send
 ```
@@ -18,7 +18,7 @@ sudo apt install notify-send
 
 
 
-新建copytrans.sh文件，将以下代码复制进该文件中。
+新建 copytrans.sh 文件，将以下代码复制进该文件中。
 
 ```bash
 #!/usr/bin/env bash
@@ -44,4 +44,4 @@ chmod a+x copytrans.sh
 
 ## 使用
 
-选中词或句子，按Ctrl+C复制，按设定的快捷键运行翻译脚本显示翻译。
+选中词或句子，按 Ctrl+C 复制，按设定的快捷键运行翻译脚本显示翻译。
