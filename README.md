@@ -18,7 +18,7 @@ sudo apt install notify-send
 
 
 
-新建 copytrans.sh 文件，将以下代码复制进该文件中。
+新建 [copytrans.sh](https://github.com/maxuewei2/CopyTrans/blob/master/copytrans.sh) 文件，将以下代码复制进该文件中。
 
 ```bash
 #!/usr/bin/env bash
@@ -38,7 +38,7 @@ notify-send "$se" "$re" -i accessories-dictionary -t 2000
 chmod a+x copytrans.sh
 ```
 
-然后在系统快捷键设置中添加执行此脚本的快捷键。
+在系统快捷键设置中添加执行此脚本的快捷键。
 
 
 
