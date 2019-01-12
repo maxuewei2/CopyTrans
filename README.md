@@ -3,7 +3,7 @@
 在Linux下复制文本并翻译，以系统通知显示翻译结果。
 
 ## 效果
-![](/home/xuewei/Videos/SC.gif)
+![](SC.gif)
 
 ## 安装
 安装xsel或xclip
@@ -25,6 +25,7 @@ sudo apt install notify-send
 
 # Need https://github.com/soimort/translate-shell installed.
 # Need xsel or xclip installed.
+# Need notify-send installed.
 
 se=$(xsel -b -n -o | tr '\n' ' '| tr '\r' ' ' | sed 's/  / /g') # xclip -selection clipboard -o
 echo $se
