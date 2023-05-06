@@ -2,10 +2,11 @@
 
 # Need https://github.com/soimort/translate-shell installed.
 # Need xsel or xclip installed.
-# Need notify-send installed.
-# Need python2 installed
+# Need notify-send or libnotify-bin installed.
 
-se=$(xsel -b -n -o) # xclip -selection clipboard -o
-se=$(python2 /path-to-CopyTrans/pre_text.py "$se")
-re=$(trans -b en:zh "$se")  # the 'trans' command is the installed translate-shell.
-notify-send "$se" "$re" -i accessories-dictionary -t 2000
+curdir=`dirname $0`
+
+selected=`xsel -b -n -o` # xclip -selection clipboard -o
+selected=`printf "$selected" | tr -d '\r' | sed 's/-$//g' | tr -d '\n'`
+translated=`${curdir}/trans -e bing -b en:zh "$selected"`  # the 'trans' command is the installed translate-shell.
+notify-send "$selected" "$translated" -t 2000

@@ -6,17 +6,29 @@
 ![](SC.gif)
 
 ## 安装
+
 安装 xsel 或 xclip
 ```bash
 sudo apt install xsel xclip
 ```
-安装 [notify-send](https://github.com/vlevit/notify-send.sh)
+
+安装 notify-send 
 ```bash
+# 方式1
 sudo apt install notify-send
+
+# 方式2
+sudo apt install libnotify-bin
+
+# 方式3
+# 使用 https://github.com/vlevit/notify-send.sh
 ```
+
 安装 [translate-shell](https://github.com/soimort/translate-shell)
-
-
+```bash
+wget git.io/trans
+chmod +x ./trans
+```
 
 新建 [copytrans.sh](https://github.com/maxuewei2/CopyTrans/blob/master/copytrans.sh) 文件，将以下代码复制进该文件中。
 
@@ -25,15 +37,16 @@ sudo apt install notify-send
 
 # Need https://github.com/soimort/translate-shell installed.
 # Need xsel or xclip installed.
-# Need notify-send installed.
-# Need python2 installed
+# Need notify-send or libnotify-bin installed.
 
-se=$(xsel -b -n -o) # xclip -selection clipboard -o
-se=$(python2 /path-to-CopyTrans/pre_text.py "$se")
-re=$(trans -b en:zh "$se")  # the 'trans' command is the installed translate-shell.
-notify-send "$se" "$re" -i accessories-dictionary -t 2000
+curdir=`dirname $0`
+
+selected=`xsel -b -n -o` # xclip -selection clipboard -o
+selected=`printf "$selected" | tr -d '\r' | sed 's/-$//g' | tr -d '\n'`
+translated=`${curdir}/trans -e bing -b en:zh "$selected"`  # the 'trans' command is the installed translate-shell.
+notify-send "$selected" "$translated" -t 2000
 ```
-将其中的`/path-to-CopyTrans`修改为 CopyTrans 所在的路径。
+
 ```bash
 chmod a+x copytrans.sh
 ```
