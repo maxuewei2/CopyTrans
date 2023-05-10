@@ -30,23 +30,7 @@ wget git.io/trans
 chmod +x ./trans
 ```
 
-新建 [copytrans.sh](https://github.com/maxuewei2/CopyTrans/blob/master/copytrans.sh) 文件，将以下代码复制进该文件中。
-
-```bash
-#!/usr/bin/env bash
-
-# Need https://github.com/soimort/translate-shell installed.
-# Need xsel or xclip installed.
-# Need notify-send or libnotify-bin installed.
-
-curdir=`dirname $0`
-
-selected=`xsel -b -n -o` # xclip -selection clipboard -o
-selected=`printf "$selected" | tr -d '\r' | sed 's/-$//g' | tr -d '\n'`
-translated=`${curdir}/trans -e bing -b en:zh "$selected"`  # the 'trans' command is the installed translate-shell.
-notify-send "$selected" "$translated" -t 2000
-```
-
+给copytrans.sh添加执行权限
 ```bash
 chmod a+x copytrans.sh
 ```
